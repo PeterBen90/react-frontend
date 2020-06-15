@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import "./Login.css";
+import Spinner from "../utilities/Spinner";
 
 class Login extends Component {
 	constructor() {
@@ -98,20 +99,7 @@ class Login extends Component {
 
 		return (
 			<div className="container">
-				{loading ? (
-					<div className="lds-roller">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				) : (
-					""
-				)}
+				{loading ? <Spinner /> : ""}
 				<h2 className="mt-5 mb-5">Login</h2>
 				<div
 					className="alert alert-danger"
