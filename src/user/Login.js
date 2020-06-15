@@ -1,48 +1,55 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import "./Login.css";
 
-class Register extends Component {
+class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			username: "",
 			email: "",
 			password: "",
 			error: "",
-			success: false,
+			redirectToHome: false,
+			loading: false,
 		};
 	}
 
-	//higher order function (function that returns another function)
-	//handles all input fields
-	handleChange = (username) => (event) => {
+	handleChange = (email) => (event) => {
 		this.setState({ error: "" });
-		this.setState({ [username]: event.target.value });
+		this.setState({ [email]: event.target.value });
+	};
+
+	authenticate = (jwt, next) => {
+		if (typeof window != "undefined") {
+			localStorage.setItem("jwt", JSON.stringify(jwt));
+			next();
+		}
 	};
 
 	clickSubmit = (event) => {
 		event.preventDefault();
-		const { username, email, password } = this.state;
+		this.setState({ loading: true });
+		const { email, password } = this.state;
 		const user = {
-			username,
 			email,
 			password,
 		};
-		//console.log(user);
-		this.registerNewUser(user).then((data) => {
-			if (data.error) this.setState({ error: data.error });
-			else
-				this.setState({
-					error: "",
-					username: "",
-					email: "",
-					password: "",
-					success: true,
+		console.log(user);
+		this.login(user).then((data) => {
+			if (data.error) {
+				this.setState({ error: data.error, loading: false });
+			} else {
+				//authenticate user
+				//redirect user to homepage
+				this.authenticate(data, () => {
+					this.setState({ redirectToHome: true });
 				});
+			}
 		});
 	};
 
-	registerNewUser = (user) => {
-		return fetch("http://localhost:8080/register", {
+	login = (user) => {
+		return fetch("http://localhost:8080/login", {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
@@ -56,17 +63,8 @@ class Register extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	registerForm = (username, email, password) => (
+	loginForm = (email, password) => (
 		<form>
-			<div className="form-group">
-				<label className="text-muted">Username</label>
-				<input
-					onChange={this.handleChange("username")}
-					type="text"
-					className="form-control"
-					value={username || ""}
-				/>
-			</div>
 			<div className="form-group">
 				<label className="text-muted">Email</label>
 				<input
@@ -92,11 +90,29 @@ class Register extends Component {
 	);
 
 	render() {
-		const { username, email, password, error, success } = this.state;
+		const { email, password, error, redirectToHome, loading } = this.state;
+
+		if (redirectToHome) {
+			return <Redirect to="/" />;
+		}
+
 		return (
 			<div className="container">
-				<h2 className="mt-5 mb-5">Register</h2>
-
+				{loading ? (
+					<div className="lds-roller">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				) : (
+					""
+				)}
+				<h2 className="mt-5 mb-5">Login</h2>
 				<div
 					className="alert alert-danger"
 					style={{ display: error ? "" : "none" }}
@@ -104,17 +120,10 @@ class Register extends Component {
 					{error}
 				</div>
 
-				<div
-					className="alert alert-info"
-					style={{ display: success ? "" : "none" }}
-				>
-					New account is successfully created, please sign in.
-				</div>
-
-				{this.registerForm(username, email, password)}
+				{this.loginForm(email, password)}
 			</div>
 		);
 	}
 }
 
-export default Register;
+export default Login;
