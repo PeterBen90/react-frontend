@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import "./Login.css";
 import Spinner from "../utilities/Spinner";
 
 class Login extends Component {
@@ -35,7 +34,7 @@ class Login extends Component {
 			email,
 			password,
 		};
-		console.log(user);
+		//console.log(user);
 		this.login(user).then((data) => {
 			if (data.error) {
 				this.setState({ error: data.error, loading: false });
