@@ -139,7 +139,7 @@ class Login extends Component {
 		if (loading) {
 			return <Spinner />;
 		} else if (redirectToDash) {
-			return <Redirect to="/" />;
+			return <Redirect to="/dashboard" />;
 		} else {
 			return (
 				<Container component="main" maxWidth="xs">
