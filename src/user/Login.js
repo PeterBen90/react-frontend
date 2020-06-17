@@ -126,7 +126,7 @@ class Login extends Component {
 					</Link>
 				</Grid>
 				<Grid item xs>
-					<Link href="#" variant="body2">
+					<Link href="/register" variant="body2">
 						Dont have an account? Signup.
 					</Link>
 				</Grid>
