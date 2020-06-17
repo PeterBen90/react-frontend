@@ -4,6 +4,7 @@ import Register from "./user/Register";
 import Login from "./user/Login";
 import Dashboard from "./core/Dashboard";
 import Home from "./core/Home";
+import HomeNav from "./core/HomeNav";
 
 const MainRouter = () => (
 	<div>

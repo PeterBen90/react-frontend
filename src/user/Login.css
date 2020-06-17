@@ -22,3 +22,7 @@
 	width: 100%;
 	text-align: center;
 }
+
+.MuiContainer-root {
+	margin-top: 80px !important;
+}

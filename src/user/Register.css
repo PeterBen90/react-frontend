@@ -22,3 +22,7 @@
 .MuiButtonBase-root {
 	margin-top: 10px !important;
 }
+
+.MuiContainer-root {
+	margin-top: 80px !important;
+}

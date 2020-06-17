@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import "./Register.css";
 import Copyright from "../utilities/Copyright";
+import HomeNav from "../core/HomeNav";
 
 class Register extends Component {
 	constructor() {
@@ -136,6 +137,7 @@ class Register extends Component {
 		return (
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
+				<HomeNav />
 				<div className="paper">
 					<Avatar className="avatar">
 						<LockOutlinedIcon />

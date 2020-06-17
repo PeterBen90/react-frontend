@@ -15,6 +15,7 @@ import "./Login.css";
 import Spinner from "../utilities/Spinner";
 import { Redirect } from "react-router-dom";
 import Copyright from "../utilities/Copyright";
+import HomeNav from "../core/HomeNav";
 
 class Login extends Component {
 	constructor() {
@@ -182,6 +183,7 @@ class Login extends Component {
 			return (
 				<Container component="main" maxWidth="xs">
 					<CssBaseline />
+					<HomeNav />
 					<div className="paper">
 						<Avatar className="avatar">
 							<LockOutlinedIcon />
