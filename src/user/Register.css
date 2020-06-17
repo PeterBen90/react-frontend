@@ -1,0 +1,24 @@
+.paper {
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.avatar {
+	margin: 1em;
+}
+
+.form {
+	margin-top: 1em;
+	width: 100%;
+}
+
+.submit {
+	margin: 3em, 0, 2em;
+}
+
+.alert {
+	width: 100%;
+	text-align: center;
+}

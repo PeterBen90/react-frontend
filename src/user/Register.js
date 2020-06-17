@@ -1,4 +1,18 @@
 import React, { Component } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import "./Register.css";
+import Copyright from "../utilities/Copyright";
 
 class Register extends Component {
 	constructor() {
@@ -57,62 +71,101 @@ class Register extends Component {
 	};
 
 	registerForm = (username, email, password) => (
-		<form>
-			<div className="form-group">
-				<label className="text-muted">Username</label>
-				<input
-					onChange={this.handleChange("username")}
-					type="text"
-					className="form-control"
-					value={username || ""}
-				/>
-			</div>
-			<div className="form-group">
-				<label className="text-muted">Email</label>
-				<input
-					onChange={this.handleChange("email")}
-					type="email"
-					className="form-control"
-					value={email || ""}
-				/>
-			</div>
-			<div className="form-group">
-				<label className="text-muted">Password</label>
-				<input
-					onChange={this.handleChange("password")}
-					type="password"
-					className="form-control"
-					value={password || ""}
-				/>
-			</div>
-			<button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
-				Submit
-			</button>
+		<form className="form">
+			<TextField
+				variant="outlined"
+				margin="normal"
+				required
+				fullWidth
+				id="username"
+				label="Username"
+				name="username"
+				autoComplete="username"
+				autoFocus
+				onChange={this.handleChange("username")}
+				value={username || ""}
+			/>
+			<TextField
+				variant="outlined"
+				margin="normal"
+				required
+				fullWidth
+				id="email"
+				label="Email"
+				name="email"
+				autoComplete="email"
+				autoFocus
+				onChange={this.handleChange("email")}
+				value={email || ""}
+			/>
+			<TextField
+				variant="outlined"
+				margin="normal"
+				required
+				fullWidth
+				name="password"
+				label="Password"
+				type="password"
+				id="password"
+				autoComplete="current-password"
+				onChange={this.handleChange("password")}
+				value={password || ""}
+			/>
+			<FormControlLabel
+				control={<Checkbox value="remember" color="primary" />}
+				label="Remember me"
+			/>
+			<Button
+				type="submit"
+				fullWidth
+				variant="contained"
+				color="primary"
+				onClick={this.clickSubmit}
+				className="submit"
+			>
+				Register
+			</Button>
+			<Grid container>
+				<Grid item xs>
+					<Link href="#" variant="body2">
+						Forgot password?
+					</Link>
+				</Grid>
+			</Grid>
 		</form>
 	);
 
 	render() {
 		const { username, email, password, error, success } = this.state;
 		return (
-			<div className="container">
-				<h2 className="mt-5 mb-5">Register</h2>
-
-				<div
-					className="alert alert-danger"
-					style={{ display: error ? "" : "none" }}
-				>
-					{error}
+			<Container component="main" maxWidth="xs">
+				<CssBaseline />
+				<div className="paper">
+					<Avatar className="avatar">
+						<LockOutlinedIcon />
+					</Avatar>
+					<Typography component="h1" variant="h5">
+						Register
+					</Typography>
+					<div
+						className="alert alert-danger"
+						style={{ display: error ? "" : "none" }}
+					>
+						{error}
+					</div>
+					<div
+						className="alert alert-info"
+						style={{ display: success ? "" : "none" }}
+					>
+						New account is successfully created, please{" "}
+						<Link href="/login">{"log in here"}</Link>
+					</div>
+					{this.registerForm(username, email, password)}
 				</div>
-
-				<div
-					className="alert alert-info"
-					style={{ display: success ? "" : "none" }}
-				>
-					New account is successfully created, please sign in.
-				</div>
-
-				{this.registerForm(username, email, password)}
-			</div>
+				<Box mt={8}>
+					<Copyright />
+				</Box>
+			</Container>
 		);
 	}
 }
