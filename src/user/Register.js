@@ -111,10 +111,6 @@ class Register extends Component {
 				onChange={this.handleChange("password")}
 				value={password || ""}
 			/>
-			<FormControlLabel
-				control={<Checkbox value="remember" color="primary" />}
-				label="Remember me"
-			/>
 			<Button
 				type="submit"
 				fullWidth

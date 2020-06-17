@@ -14,11 +14,11 @@
 	width: 100%;
 }
 
-.submit {
-	margin: 3em, 0, 2em;
-}
-
 .alert {
 	width: 100%;
 	text-align: center;
+}
+
+.MuiButtonBase-root {
+	margin-top: 10px !important;
 }
