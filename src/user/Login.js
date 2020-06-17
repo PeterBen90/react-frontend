@@ -25,8 +25,25 @@ class Login extends Component {
 			error: "",
 			redirectToDash: false,
 			loading: false,
+			isChecked: false,
 		};
 	}
+
+	componentDidMount() {
+		if (localStorage.checkbox && localStorage.email !== "") {
+			this.setState({
+				isChecked: true,
+				email: localStorage.username,
+				password: localStorage.password,
+			});
+		}
+	}
+
+	onChangeCheckbox = (event) => {
+		this.setState({
+			isChecked: event.target.checked,
+		});
+	};
 
 	handleChange = (email) => (event) => {
 		this.setState({ error: "" });
@@ -43,11 +60,17 @@ class Login extends Component {
 	clickSubmit = (event) => {
 		event.preventDefault();
 		this.setState({ loading: true });
-		const { email, password } = this.state;
+		const { email, password, isChecked } = this.state;
 		const user = {
 			email,
 			password,
+			isChecked,
 		};
+		if (isChecked && email !== "") {
+			localStorage.username = email;
+			localStorage.password = password;
+			localStorage.checkbox = isChecked;
+		}
 		//console.log(user);
 		this.login(user).then((data) => {
 			if (data.error) {
@@ -77,7 +100,7 @@ class Login extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	loginForm = (email, password) => (
+	loginForm = (email, password, isChecked) => (
 		<form className="form">
 			<TextField
 				variant="outlined"
@@ -106,7 +129,15 @@ class Login extends Component {
 				value={password || ""}
 			/>
 			<FormControlLabel
-				control={<Checkbox value="remember" color="primary" />}
+				control={
+					<Checkbox
+						value="remember"
+						color="primary"
+						type="checkbox"
+						onChange={this.onChangeCheckbox}
+						checked={isChecked}
+					/>
+				}
 				label="Remember me"
 			/>
 			<Button
@@ -135,7 +166,14 @@ class Login extends Component {
 	);
 
 	render() {
-		const { email, password, error, redirectToDash, loading } = this.state;
+		const {
+			email,
+			password,
+			error,
+			redirectToDash,
+			loading,
+			isChecked,
+		} = this.state;
 		if (loading) {
 			return <Spinner />;
 		} else if (redirectToDash) {
@@ -157,7 +195,7 @@ class Login extends Component {
 						>
 							{error}
 						</div>
-						{this.loginForm(email, password)}
+						{this.loginForm(email, password, isChecked)}
 					</div>
 					<Box mt={8}>
 						<Copyright />
