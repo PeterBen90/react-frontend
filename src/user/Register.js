@@ -10,6 +10,7 @@ import "./Register.css";
 import Copyright from "../utilities/Copyright";
 import HomeNav from "../core/HomeNav";
 import logo from "../images/guru-logo.png";
+import { registerNewUser } from "../auth";
 
 class Register extends Component {
 	constructor() {
@@ -39,7 +40,7 @@ class Register extends Component {
 			password,
 		};
 		//console.log(user);
-		this.registerNewUser(user).then((data) => {
+		registerNewUser(user).then((data) => {
 			if (data.error) this.setState({ error: data.error });
 			else
 				this.setState({
@@ -50,21 +51,6 @@ class Register extends Component {
 					success: true,
 				});
 		});
-	};
-
-	registerNewUser = (user) => {
-		return fetch("http://localhost:8080/register", {
-			method: "POST",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(user),
-		})
-			.then((response) => {
-				return response.json();
-			})
-			.catch((err) => console.log(err));
 	};
 
 	registerForm = (username, email, password) => (

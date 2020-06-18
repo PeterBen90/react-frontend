@@ -14,6 +14,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link, NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import logo from "../images/guru-logo.png";
+import HomeIcon from "@material-ui/icons/Home";
+import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
 
 const styleSheet = {
 	list: {
@@ -114,7 +117,7 @@ class HomeNav extends Component {
 							style={{ width: 200, fontSize: "0.875rem" }}
 							className={classes.list}
 						>
-							<ListItem key={1} button divider>
+							<ListItem key={1} button divider style={{ marginLeft: -20 }}>
 								{" "}
 								<img
 									src={logo}
@@ -126,16 +129,22 @@ class HomeNav extends Component {
 								</i>
 							</ListItem>
 							<ListItem key={2} button divider>
-								{" "}
-								<Link to="/">HOME</Link>
+								<HomeIcon />
+								<Link style={{ marginLeft: 10, color: "black" }} to="/">
+									HOME
+								</Link>
 							</ListItem>
 							<ListItem key={2} button divider>
-								{" "}
-								<Link to="/register">REGISTER</Link>
+								<VerifiedUserIcon />
+								<Link style={{ marginLeft: 10, color: "black" }} to="/register">
+									REGISTER
+								</Link>
 							</ListItem>
 							<ListItem key={3} button divider>
-								{" "}
-								<Link to="/login">LOGIN</Link>
+								<LockOpenIcon />
+								<Link style={{ marginLeft: 10, color: "black" }} to="/login">
+									LOGIN
+								</Link>
 							</ListItem>
 						</List>
 					</div>

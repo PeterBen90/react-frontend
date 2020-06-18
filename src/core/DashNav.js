@@ -12,6 +12,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import logo from "../images/guru-logo.png";
+import { logoutUser, isAuthenticated } from "../auth/index";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 class DashNav extends Component {
 	constructor(props) {
@@ -34,19 +38,6 @@ class DashNav extends Component {
 			}
 		});
 	}
-
-	logoutUser = (next) => {
-		if (typeof window !== "undefined") localStorage.removeItem("jwt");
-		next();
-		return fetch("http://localhost:8080/logout", {
-			method: "GET",
-		})
-			.then((response) => {
-				console.log("logout", response);
-				return response.json();
-			})
-			.catch((err) => console.log(err));
-	};
 
 	//Small Screens
 	createDrawer() {
@@ -107,7 +98,7 @@ class DashNav extends Component {
 						}}
 					>
 						<List style={{ width: 200, fontSize: "0.875rem" }}>
-							<ListItem key={1} button divider>
+							<ListItem key={1} button divider style={{ marginLeft: -20 }}>
 								{" "}
 								<img
 									src={logo}
@@ -120,17 +111,28 @@ class DashNav extends Component {
 							</ListItem>
 							<ListItem key={2} button divider>
 								{" "}
-								<Link to="/dashboard">DASHBOARD</Link>
+								Welcome back, {isAuthenticated().user.username}
 							</ListItem>
 							<ListItem key={2} button divider>
-								{" "}
-								<Link to="/profile">PROFILE</Link>
+								<DashboardIcon />{" "}
+								<Link
+									style={{ marginLeft: 10, color: "black" }}
+									to="/dashboard"
+								>
+									DASHBOARD
+								</Link>
+							</ListItem>
+							<ListItem key={2} button divider>
+								<AccountBoxIcon />
+								<Link style={{ marginLeft: 10, color: "black" }} to="/profile">
+									PROFILE
+								</Link>
 							</ListItem>
 							<ListItem key={3} button divider>
-								{" "}
+								<ExitToAppIcon />
 								<a
-									onClick={() => this.logoutUser(() => history.push("/"))}
-									style={{ color: "#009688" }}
+									onClick={() => logoutUser(() => history.push("/"))}
+									style={{ marginLeft: 10, color: "black" }}
 								>
 									LOGOUT
 								</a>
@@ -153,7 +155,10 @@ class DashNav extends Component {
 						style={{ flexGrow: 1 }}
 						color="inherit"
 					>
-						<Link style={{ color: "#FFF", textDecoration: "none" }} to="/">
+						<Link
+							style={{ color: "#FFF", textDecoration: "none" }}
+							to="/dashboard"
+						>
 							<img
 								src={logo}
 								style={{ height: 50, width: "auto", marginRight: -10 }}
@@ -163,6 +168,9 @@ class DashNav extends Component {
 								DASH<span style={{ color: "#009688" }}>GURU</span>
 							</i>
 						</Link>
+					</Typography>
+					<Typography style={{ marginRight: 20 }}>
+						Welcome back, {isAuthenticated().user.username}
 					</Typography>
 					<Button
 						variant="subheading"
@@ -198,7 +206,7 @@ class DashNav extends Component {
 						className="nav bg-primary"
 						color="inherit"
 						style={{ color: "#FFF", marginBottom: 10 }}
-						onClick={() => this.logoutUser(() => history.push("/"))}
+						onClick={() => logoutUser(() => history.push("/"))}
 					>
 						LOGOUT
 					</Button>

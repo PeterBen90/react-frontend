@@ -4,7 +4,12 @@ import Typography from "@material-ui/core/Typography";
 
 function Copyright() {
 	return (
-		<Typography variant="body2" color="textSecondary" align="center">
+		<Typography
+			variant="body2"
+			color="textSecondary"
+			align="center"
+			style={{ marginTop: -30 }}
+		>
 			{"Copyright © "}
 			<Link color="inherit" href="https://material-ui.com/">
 				DASHGURU
