@@ -13,6 +13,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link, NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import logo from "../images/guru-logo.png";
 
 const styleSheet = {
 	list: {
@@ -72,7 +73,16 @@ class HomeNav extends Component {
 								}}
 							/>
 
-							<Typography color="inherit">APP NAME</Typography>
+							<Typography color="inherit">
+								<i>
+									GURU<span style={{ color: "#009688" }}>DASH</span>
+								</i>
+								<img
+									src={logo}
+									style={{ height: 50, width: "auto" }}
+									alt="logo"
+								/>
+							</Typography>
 							<Typography color="inherit"></Typography>
 						</Grid>
 					</Toolbar>
@@ -103,7 +113,14 @@ class HomeNav extends Component {
 						>
 							<ListItem key={1} button divider>
 								{" "}
-								APP NAME
+								<i>
+									GURU<span style={{ color: "#009688" }}>DASH</span>
+								</i>
+								<img
+									src={logo}
+									style={{ height: 50, width: "auto" }}
+									alt="logo"
+								/>
 							</ListItem>
 							<ListItem key={2} button divider>
 								{" "}
@@ -135,7 +152,14 @@ class HomeNav extends Component {
 						color="inherit"
 					>
 						<Link style={{ color: "#FFF", textDecoration: "none" }} to="/">
-							APP NAME
+							<i>
+								GURU<span style={{ color: "#009688" }}>DASH</span>
+							</i>
+							<img
+								src={logo}
+								style={{ height: 50, width: "auto" }}
+								alt="logo"
+							/>
 						</Link>
 					</Typography>
 					<Button

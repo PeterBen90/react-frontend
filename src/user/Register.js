@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
@@ -133,7 +132,6 @@ class Register extends Component {
 		const { username, email, password, error, success } = this.state;
 		return (
 			<Container component="main" maxWidth="xs">
-				<CssBaseline />
 				<HomeNav />
 				<div className="paper">
 					<img src={logo} className="logo" alt="logo" />
