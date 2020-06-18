@@ -29,6 +29,10 @@ const styleSheet = {
 		color: "white",
 		cursor: "pointer",
 	},
+
+	margin: {
+		marginRight: 20,
+	},
 };
 
 class HomeNav extends Component {
@@ -55,6 +59,7 @@ class HomeNav extends Component {
 
 	//Small Screens
 	createDrawer() {
+		const { classes } = this.props;
 		return (
 			<div>
 				<AppBar>
@@ -72,8 +77,12 @@ class HomeNav extends Component {
 								}}
 							/>
 
-							<Typography color="inherit" variant="headline">
-								Title
+							<Typography
+								className={classes.margin}
+								color="inherit"
+								variant="headline"
+							>
+								APP NAME
 							</Typography>
 							<Typography color="inherit" variant="headline"></Typography>
 						</Grid>
@@ -106,6 +115,10 @@ class HomeNav extends Component {
 							</ListItem>
 							<ListItem key={2} button divider>
 								{" "}
+								<Link to="/">HOME </Link>
+							</ListItem>
+							<ListItem key={2} button divider>
+								{" "}
 								<Link to="/register">REGISTER </Link>
 							</ListItem>
 							<ListItem key={3} button divider>
@@ -132,6 +145,15 @@ class HomeNav extends Component {
 					>
 						APP NAME
 					</Typography>
+					<Button
+						variant="subheading"
+						className={classes.padding}
+						color="inherit"
+						href="/"
+						style={{ color: "#FFF" }}
+					>
+						HOME
+					</Button>
 					<Button
 						variant="subheading"
 						className={classes.padding}
