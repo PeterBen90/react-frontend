@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import {
 	AppBar,
 	Toolbar,
@@ -35,8 +34,22 @@ class DashNav extends Component {
 		});
 	}
 
+	logoutUser = (next) => {
+		if (typeof window !== "undefined") localStorage.removeItem("jwt");
+		next();
+		return fetch("http://localhost:8080/logout", {
+			method: "GET",
+		})
+			.then((response) => {
+				console.log("logout", response);
+				return response.json();
+			})
+			.catch((err) => console.log(err));
+	};
+
 	//Small Screens
 	createDrawer() {
+		const { history } = this.props;
 		return (
 			<div>
 				<AppBar>
@@ -96,7 +109,12 @@ class DashNav extends Component {
 							</ListItem>
 							<ListItem key={3} button divider>
 								{" "}
-								<Link to="/">LOGOUT</Link>
+								<a
+									onClick={() => this.logoutUser(() => history.push("/"))}
+									style={{ color: "#009688" }}
+								>
+									LOGOUT
+								</a>
 							</ListItem>
 						</List>
 					</div>
@@ -104,19 +122,6 @@ class DashNav extends Component {
 			</div>
 		);
 	}
-
-	logoutUser = (next) => {
-		if (typeof window !== "undefined") localStorage.removeItem("jwt");
-		next();
-		return fetch("http://localhost:8080/logout", {
-			method: "GET",
-		})
-			.then((response) => {
-				console.log("logout", response);
-				return response.json();
-			})
-			.catch((err) => console.log(err));
-	};
 
 	//Larger Screens
 	destroyDrawer() {

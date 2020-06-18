@@ -97,7 +97,10 @@ class HomeNav extends Component {
 							this.setState({ drawer: false });
 						}}
 					>
-						<List className={classes.list}>
+						<List
+							style={{ width: 200, fontSize: "0.875rem" }}
+							className={classes.list}
+						>
 							<ListItem key={1} button divider>
 								{" "}
 								APP NAME
