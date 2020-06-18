@@ -29,10 +29,6 @@ const styleSheet = {
 		color: "white",
 		cursor: "pointer",
 	},
-
-	margin: {
-		marginRight: 20,
-	},
 };
 
 class HomeNav extends Component {
@@ -143,32 +139,25 @@ class HomeNav extends Component {
 						style={{ flexGrow: 1 }}
 						color="inherit"
 					>
-						APP NAME
+						<Link style={{ color: "#FFF", textDecoration: "none" }} to="/">
+							APP NAME
+						</Link>
 					</Typography>
 					<Button
 						variant="subheading"
-						className={classes.padding}
-						color="inherit"
-						href="/"
-						style={{ color: "#FFF" }}
-					>
-						HOME
-					</Button>
-					<Button
-						variant="subheading"
-						className={classes.padding}
+						className="nav nav-tabs bg-primary"
 						color="inherit"
 						href="/register"
-						style={{ color: "#FFF" }}
+						style={{ color: "#FFF", marginBottom: 10 }}
 					>
 						REGISTER
 					</Button>
 					<Button
 						variant="subheading"
-						className={classes.padding}
+						className="nav"
 						color="inherit"
 						href="/login"
-						style={{ color: "#FFF" }}
+						style={{ color: "#FFF", marginBottom: 10 }}
 					>
 						LOGIN
 					</Button>
