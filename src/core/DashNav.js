@@ -68,16 +68,20 @@ class DashNav extends Component {
 								}}
 							/>
 
-							<Typography color="inherit" variant="headline">
+							<Typography
+								color="inherit"
+								style={{ height: 50, width: "auto", marginRight: 35 }}
+							>
+								<img
+									src={logo}
+									style={{ height: 50, width: "auto", marginRight: -10 }}
+									alt="logo"
+								/>
 								<i>
-									GURU<span style={{ color: "#009688" }}>DASH</span>
-									<img
-										src={logo}
-										style={{ height: 50, width: "auto" }}
-										alt="logo"
-									/>
+									DASH<span style={{ color: "#009688" }}>GURU</span>
 								</i>
 							</Typography>
+
 							<Typography color="inherit" variant="headline"></Typography>
 						</Grid>
 					</Toolbar>
@@ -105,13 +109,13 @@ class DashNav extends Component {
 						<List style={{ width: 200, fontSize: "0.875rem" }}>
 							<ListItem key={1} button divider>
 								{" "}
+								<img
+									src={logo}
+									style={{ height: 50, width: "auto", marginRight: -10 }}
+									alt="logo"
+								/>
 								<i>
-									GURU<span style={{ color: "#009688" }}>DASH</span>
-									<img
-										src={logo}
-										style={{ height: 50, width: "auto" }}
-										alt="logo"
-									/>
+									DASH<span style={{ color: "#009688" }}>GURU</span>
 								</i>
 							</ListItem>
 							<ListItem key={2} button divider>
@@ -150,14 +154,14 @@ class DashNav extends Component {
 						color="inherit"
 					>
 						<Link style={{ color: "#FFF", textDecoration: "none" }} to="/">
-							<i>
-								GURU<span style={{ color: "#009688" }}>DASH</span>
-							</i>
 							<img
 								src={logo}
-								style={{ height: 50, width: "auto" }}
+								style={{ height: 50, width: "auto", marginRight: -10 }}
 								alt="logo"
 							/>
+							<i>
+								DASH<span style={{ color: "#009688" }}>GURU</span>
+							</i>
 						</Link>
 					</Typography>
 					<Button

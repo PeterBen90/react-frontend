@@ -73,15 +73,18 @@ class HomeNav extends Component {
 								}}
 							/>
 
-							<Typography color="inherit">
-								<i>
-									GURU<span style={{ color: "#009688" }}>DASH</span>
-								</i>
+							<Typography
+								color="inherit"
+								style={{ height: 50, width: "auto", marginRight: 35 }}
+							>
 								<img
 									src={logo}
-									style={{ height: 50, width: "auto" }}
+									style={{ height: 50, width: "auto", marginRight: -10 }}
 									alt="logo"
 								/>
+								<i>
+									DASH<span style={{ color: "#009688" }}>GURU</span>
+								</i>
 							</Typography>
 							<Typography color="inherit"></Typography>
 						</Grid>
@@ -113,14 +116,14 @@ class HomeNav extends Component {
 						>
 							<ListItem key={1} button divider>
 								{" "}
-								<i>
-									GURU<span style={{ color: "#009688" }}>DASH</span>
-								</i>
 								<img
 									src={logo}
-									style={{ height: 50, width: "auto" }}
+									style={{ height: 50, width: "auto", marginRight: -10 }}
 									alt="logo"
 								/>
+								<i>
+									DASH<span style={{ color: "#009688" }}>GURU</span>
+								</i>
 							</ListItem>
 							<ListItem key={2} button divider>
 								{" "}
@@ -152,14 +155,14 @@ class HomeNav extends Component {
 						color="inherit"
 					>
 						<Link style={{ color: "#FFF", textDecoration: "none" }} to="/">
-							<i>
-								GURU<span style={{ color: "#009688" }}>DASH</span>
-							</i>
 							<img
 								src={logo}
-								style={{ height: 50, width: "auto" }}
+								style={{ height: 50, width: "auto", marginRight: -10 }}
 								alt="logo"
 							/>
+							<i>
+								DASH<span style={{ color: "#009688" }}>GURU</span>
+							</i>
 						</Link>
 					</Typography>
 					<Button
