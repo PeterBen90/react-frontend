@@ -6,29 +6,12 @@ import {
 	Typography,
 	List,
 	ListItem,
-	withStyles,
 	Grid,
 	SwipeableDrawer,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-
-const styleSheet = {
-	list: {
-		width: 200,
-	},
-	padding: {
-		cursor: "pointer",
-		marginBottom: 10,
-	},
-
-	sideBarIcon: {
-		padding: 0,
-		color: "white",
-		cursor: "pointer",
-	},
-};
 
 class DashNav extends Component {
 	constructor(props) {
@@ -54,7 +37,6 @@ class DashNav extends Component {
 
 	//Small Screens
 	createDrawer() {
-		const { classes } = this.props;
 		return (
 			<div>
 				<AppBar>
@@ -66,17 +48,13 @@ class DashNav extends Component {
 							alignItems="center"
 						>
 							<MenuIcon
-								className={this.props.classes.sideBarIcon}
+								style={{ padding: 0, color: "#FFF", cursor: "pointer" }}
 								onClick={() => {
 									this.setState({ drawer: true });
 								}}
 							/>
 
-							<Typography
-								className={classes.margin}
-								color="inherit"
-								variant="headline"
-							>
+							<Typography color="inherit" variant="headline">
 								APP NAME
 							</Typography>
 							<Typography color="inherit" variant="headline"></Typography>
@@ -103,7 +81,7 @@ class DashNav extends Component {
 							this.setState({ drawer: false });
 						}}
 					>
-						<List className={this.props.classes.list}>
+						<List style={{ width: 200, fontSize: "0.875rem" }}>
 							<ListItem key={1} button divider>
 								{" "}
 								APP NAME
@@ -118,7 +96,7 @@ class DashNav extends Component {
 							</ListItem>
 							<ListItem key={3} button divider>
 								{" "}
-								<a>LOGOUT</a>
+								<Link to="/">LOGOUT</Link>
 							</ListItem>
 						</List>
 					</div>
@@ -127,8 +105,22 @@ class DashNav extends Component {
 		);
 	}
 
+	logoutUser = (next) => {
+		if (typeof window !== "undefined") localStorage.removeItem("jwt");
+		next();
+		return fetch("http://localhost:8080/logout", {
+			method: "GET",
+		})
+			.then((response) => {
+				console.log("logout", response);
+				return response.json();
+			})
+			.catch((err) => console.log(err));
+	};
+
 	//Larger Screens
 	destroyDrawer() {
+		const { history } = this.props;
 		return (
 			<AppBar>
 				<Toolbar>
@@ -175,6 +167,7 @@ class DashNav extends Component {
 						className="nav bg-primary"
 						color="inherit"
 						style={{ color: "#FFF", marginBottom: 10 }}
+						onClick={() => this.logoutUser(() => history.push("/"))}
 					>
 						LOGOUT
 					</Button>
@@ -192,8 +185,4 @@ class DashNav extends Component {
 	}
 }
 
-DashNav.propTypes = {
-	classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styleSheet)(DashNav);
+export default withRouter(DashNav);

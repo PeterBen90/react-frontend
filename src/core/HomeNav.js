@@ -66,15 +66,13 @@ class HomeNav extends Component {
 							alignItems="center"
 						>
 							<MenuIcon
-								className={this.props.classes.sideBarIcon}
+								className={classes.sideBarIcon}
 								onClick={() => {
 									this.setState({ drawer: true });
 								}}
 							/>
 
-							<Typography className={classes.margin} color="inherit">
-								APP NAME
-							</Typography>
+							<Typography color="inherit">APP NAME</Typography>
 							<Typography color="inherit"></Typography>
 						</Grid>
 					</Toolbar>
@@ -99,7 +97,7 @@ class HomeNav extends Component {
 							this.setState({ drawer: false });
 						}}
 					>
-						<List className={this.props.classes.list}>
+						<List className={classes.list}>
 							<ListItem key={1} button divider>
 								{" "}
 								APP NAME
