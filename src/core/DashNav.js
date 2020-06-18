@@ -11,7 +11,7 @@ import {
 	SwipeableDrawer,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 const styleSheet = {
@@ -30,7 +30,7 @@ const styleSheet = {
 	},
 };
 
-class HomeNav extends Component {
+class DashNav extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { drawerActivate: false, drawer: false };
@@ -72,10 +72,14 @@ class HomeNav extends Component {
 								}}
 							/>
 
-							<Typography className={classes.margin} color="inherit">
+							<Typography
+								className={classes.margin}
+								color="inherit"
+								variant="headline"
+							>
 								APP NAME
 							</Typography>
-							<Typography color="inherit"></Typography>
+							<Typography color="inherit" variant="headline"></Typography>
 						</Grid>
 					</Toolbar>
 				</AppBar>
@@ -106,15 +110,15 @@ class HomeNav extends Component {
 							</ListItem>
 							<ListItem key={2} button divider>
 								{" "}
-								<Link to="/">HOME</Link>
+								<Link to="/dashboard">DASHBOARD</Link>
 							</ListItem>
 							<ListItem key={2} button divider>
 								{" "}
-								<Link to="/register">REGISTER</Link>
+								<Link to="/profile">PROFILE</Link>
 							</ListItem>
 							<ListItem key={3} button divider>
 								{" "}
-								<Link to="/login">LOGIN</Link>
+								<a>LOGOUT</a>
 							</ListItem>
 						</List>
 					</div>
@@ -139,30 +143,40 @@ class HomeNav extends Component {
 					</Typography>
 					<Button
 						variant="subheading"
-						className="nav bg-primary"
+						className="nav-link"
 						color="inherit"
 						style={{ color: "#FFF", marginBottom: 10 }}
 					>
 						<NavLink
 							style={{ color: "#FFF", textDecoration: "none" }}
-							to="/register"
+							to="/dashboard"
+							activeStyle={{ color: "#009688" }}
 						>
-							REGISTER
+							DASHBOARD
 						</NavLink>
 					</Button>
 					<Button
 						variant="subheading"
-						className="nav"
+						className="nav-link"
 						color="inherit"
+						href="/profile"
 						style={{ color: "#FFF", marginBottom: 10 }}
 					>
 						<NavLink
-							activeStyle={{ color: "#009688" }}
 							style={{ color: "#FFF", textDecoration: "none" }}
-							to="/login"
+							to="/profile"
+							activeStyle={{ color: "#009688" }}
 						>
-							LOGIN
+							PROFILE
 						</NavLink>
+					</Button>
+					<Button
+						variant="subheading"
+						className="nav bg-primary"
+						color="inherit"
+						style={{ color: "#FFF", marginBottom: 10 }}
+					>
+						LOGOUT
 					</Button>
 				</Toolbar>
 			</AppBar>
@@ -178,8 +192,8 @@ class HomeNav extends Component {
 	}
 }
 
-HomeNav.propTypes = {
+DashNav.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styleSheet)(HomeNav);
+export default withStyles(styleSheet)(DashNav);

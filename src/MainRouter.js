@@ -4,12 +4,13 @@ import Register from "./user/Register";
 import Login from "./user/Login";
 import Dashboard from "./core/Dashboard";
 import Home from "./core/Home";
-import HomeNav from "./core/HomeNav";
+import Profile from "./core/Profile";
 
 const MainRouter = () => (
 	<div>
 		<Switch>
 			<Route exact path="/" component={Home} />
+			<Route exact path="/profile" component={Profile} />
 			<Route exact path="/dashboard" component={Dashboard} />
 			<Route exact path="/register" component={Register} />
 			<Route exact path="/login" component={Login} />

@@ -1,10 +1,13 @@
 import React from "react";
+import DashNav from "./DashNav";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
 
 const Dashboard = () => (
-	<div className="jumbotron">
-		<h2>Dashboard</h2>
-		<p className="lead">Welcome to React Frontend</p>
-	</div>
+	<Container>
+		<DashNav />
+		<Typography>DASHBOARD</Typography>
+	</Container>
 );
 
 export default Dashboard;

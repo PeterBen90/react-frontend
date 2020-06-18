@@ -26,3 +26,9 @@
 .MuiContainer-root {
 	margin-top: 80px !important;
 }
+
+.logo {
+	width: 200px;
+	height: auto;
+	padding: -50px;
+}

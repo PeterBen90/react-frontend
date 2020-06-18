@@ -1,13 +1,13 @@
 import React from "react";
-import HomeNav from "./HomeNav";
+import DashNav from "./DashNav";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
-const Home = () => (
+const Profile = () => (
 	<Container>
-		<HomeNav />
-		<Typography>HOME</Typography>
+		<DashNav />
+		<Typography>PROFILE</Typography>
 	</Container>
 );
 
-export default Home;
+export default Profile;
