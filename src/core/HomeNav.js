@@ -114,7 +114,7 @@ class HomeNav extends Component {
 						}}
 					>
 						<List
-							style={{ width: 200, fontSize: "0.875rem" }}
+							style={{ width: 250, fontSize: "0.875rem" }}
 							className={classes.list}
 						>
 							<ListItem key={1} button divider style={{ marginLeft: -20 }}>

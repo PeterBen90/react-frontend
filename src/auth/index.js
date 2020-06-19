@@ -1,6 +1,6 @@
 //login user
 export const login = (user) => {
-	return fetch("http://localhost:8080/login", {
+	return fetch(`${process.env.REACT_APP_API_URL}/login`, {
 		method: "POST",
 		headers: {
 			Accept: "application/json",
@@ -16,7 +16,7 @@ export const login = (user) => {
 
 //register user
 export const registerNewUser = (user) => {
-	return fetch("http://localhost:8080/register", {
+	return fetch(`${process.env.REACT_APP_API_URL}/register`, {
 		method: "POST",
 		headers: {
 			Accept: "application/json",
@@ -30,6 +30,7 @@ export const registerNewUser = (user) => {
 		.catch((err) => console.log(err));
 };
 
+//authenticate user
 export const authenticate = (jwt, next) => {
 	if (typeof window != "undefined") {
 		localStorage.setItem("jwt", JSON.stringify(jwt));
@@ -37,10 +38,11 @@ export const authenticate = (jwt, next) => {
 	}
 };
 
+//logout user
 export const logoutUser = (next) => {
 	if (typeof window !== "undefined") localStorage.removeItem("jwt");
 	next();
-	return fetch("http://localhost:8080/logout", {
+	return fetch(`${process.env.REACT_APP_API_URL}/logout`, {
 		method: "GET",
 	})
 		.then((response) => {
@@ -50,6 +52,7 @@ export const logoutUser = (next) => {
 		.catch((err) => console.log(err));
 };
 
+//check if user is authenticated
 export const isAuthenticated = () => {
 	if (typeof window == "undefined") {
 		return false;

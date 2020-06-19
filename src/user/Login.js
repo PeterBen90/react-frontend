@@ -158,7 +158,7 @@ class Login extends Component {
 			return <Redirect to="/dashboard" />;
 		} else {
 			return (
-				<Container component="main" maxWidth="xs">
+				<Container component="main" maxWidth="xs" style={{ marginBottom: 50 }}>
 					<HomeNav />
 					<div className="paper">
 						<img src={logo} className="logo" alt="logo" />

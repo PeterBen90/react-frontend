@@ -97,7 +97,7 @@ class DashNav extends Component {
 							this.setState({ drawer: false });
 						}}
 					>
-						<List style={{ width: 200, fontSize: "0.875rem" }}>
+						<List style={{ width: 250, fontSize: "0.875rem" }}>
 							<ListItem key={1} button divider style={{ marginLeft: -20 }}>
 								{" "}
 								<img
@@ -124,18 +124,21 @@ class DashNav extends Component {
 							</ListItem>
 							<ListItem key={2} button divider>
 								<AccountBoxIcon />
-								<Link style={{ marginLeft: 10, color: "black" }} to="/profile">
+								<Link
+									style={{ marginLeft: 10, color: "black" }}
+									to={`/user/${isAuthenticated().user._id}`}
+								>
 									PROFILE
 								</Link>
 							</ListItem>
 							<ListItem key={3} button divider>
 								<ExitToAppIcon />
-								<a
+								<Link
 									onClick={() => logoutUser(() => history.push("/"))}
 									style={{ marginLeft: 10, color: "black" }}
 								>
 									LOGOUT
-								</a>
+								</Link>
 							</ListItem>
 						</List>
 					</div>
@@ -195,7 +198,7 @@ class DashNav extends Component {
 					>
 						<NavLink
 							style={{ color: "#FFF", textDecoration: "none" }}
-							to="/profile"
+							to={`/user/${isAuthenticated().user._id}`}
 							activeStyle={{ color: "#009688" }}
 						>
 							PROFILE
